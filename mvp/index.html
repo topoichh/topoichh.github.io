@@ -40,23 +40,15 @@
     </style>
 </head>
 <body>
-    <img id="audioImage" src="https://preview.redd.it/how-assisting-works-in-cs2-i-often-get-assitst-even-tho-i-v0-5l3nxhwdzeob1.jpg?width=1080&crop=smart&auto=webp&s=ec80fb3902b46bd27e8b46ad378e715248664198" alt="     ">
+    <img id="audioImage" src="https://preview.redd.it/how-assisting-works-in-cs2-i-often-get-assitst-even-tho-i-v0-5l3nxhwdzeob1.jpg?width=1080&crop=smart&auto=webp&s=ec80fb3902b46bd27e8b46ad378e715248664198" alt="Counter-Strike 2">
     <audio id="audioPlayer" src="https://cdn.csgoskins.gg/public/audio/sounds/music/bbnos_01/roundmvpanthem_01.57625a2aa636e2ef4c4ef96befd93bdaf91bcc2e.mp3"></audio>
+    <div class="instructions">You have won a round! Click to play MVP Anthem</div>
 
     <script>
         const audioImage = document.getElementById('audioImage');
         const audioPlayer = document.getElementById('audioPlayer');
         
-        audioImage.src = "https://cdn.csgoskins.gg/public/audio/sounds/music/bbnos_01/roundmvpanthem_01.57625a2aa636e2ef4c4ef96befd93bdaf91bcc2e.mp3";
-        
         audioImage.addEventListener('click', function() {
-            audioPlayer.pause();
-            audioPlayer.currentTime = 0;
-
-            audioPlayer.play().catch(e => console.log("Audio play failed:", e));
-        });
-)
-        document.body.addEventListener('click', function() {
             audioPlayer.pause();
             audioPlayer.currentTime = 0;
             audioPlayer.play().catch(e => console.log("Audio play failed:", e));
