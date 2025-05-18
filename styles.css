@@ -1,0 +1,126 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6a1b9a, #1e3c72); /* Purple to Blue gradient */
+    color: #fff;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #f39c12; /* Gold on hover */
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Main container */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border-radius: 10px;
+  }
+  
+  /* Blog Post */
+  .blog-post {
+    margin-bottom: 40px;
+  }
+  
+  .blog-post img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .blog-post h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .blog-post p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ddd;
+  }
+  
+  .blog-post .author {
+    font-style: italic;
+    font-size: 1rem;
+    color: #bbb;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #1e3c72; /* Dark blue */
+    border-radius: 10px;
+    margin-bottom: 40px;
+  }
+  
+  .navbar a {
+    color: #fff;
+    font-size: 1.2rem;
+    margin: 0 15px;
+  }
+  
+  .navbar a:hover {
+    color: #f39c12; /* Gold on hover */
+  }
+  
+  /* Footer */
+  footer {
+    background: #1e3c72; /* Dark blue */
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 40px;
+  }
+  
+  footer p {
+    font-size: 1rem;
+  }
+  
+  footer a {
+    color: #f39c12;
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+    }
+  
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .navbar a {
+      margin: 10px 0;
+    }
+  }
+  
