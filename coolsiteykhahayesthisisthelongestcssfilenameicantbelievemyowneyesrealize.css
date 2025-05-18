@@ -1,4 +1,4 @@
-/* Global Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@
   
   body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #6a1b9a, #1e3c72); /* Purple to Blue gradient */
+    background: linear-gradient(135deg, #6a1b9a, #1e3c72);
     color: #fff;
     line-height: 1.6;
     padding: 20px;
@@ -20,7 +20,7 @@
   }
   
   a:hover {
-    color: #f39c12; /* Gold on hover */
+    color: #f39c12; 
   }
   
   h1, h2, h3 {
@@ -30,16 +30,16 @@
     margin-bottom: 20px;
   }
   
-  /* Main container */
+
   .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    background-color: rgba(255, 255, 255, 0.1); 
     border-radius: 10px;
   }
   
-  /* Blog Post */
+
   .blog-post {
     margin-bottom: 40px;
   }
@@ -68,13 +68,13 @@
     color: #bbb;
   }
   
-  /* Navbar */
+
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: #1e3c72; /* Dark blue */
+    background: #1e3c72;
     border-radius: 10px;
     margin-bottom: 40px;
   }
@@ -86,12 +86,12 @@
   }
   
   .navbar a:hover {
-    color: #f39c12; /* Gold on hover */
+    color: #f39c12; 
   }
   
-  /* Footer */
+
   footer {
-    background: #1e3c72; /* Dark blue */
+    background: #1e3c72; 
     text-align: center;
     padding: 20px;
     color: #fff;
@@ -108,7 +108,7 @@
     text-decoration: underline;
   }
   
-  /* Responsive Design */
+
   @media (max-width: 768px) {
     .container {
       padding: 20px;
