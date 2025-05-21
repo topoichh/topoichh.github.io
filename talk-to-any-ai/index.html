@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html w-tid="1">
+<head w-tid="3">
+    
+<title>Chat with ANY AI model (improved reasoning)!</title>
+<meta property="og:title" content="Chat with ANY AI model (improved reasoning)!"/>
+<meta property="og:url" content="https://nx4gaxiacqc6u19maqpq.c.websim.com?v=44"/>
+<meta property="og:type" content="website"/>
+<meta property="twitter:card" content="summary_large_image"/>
+<meta property="og:image" content="https://images.websim.com/v1/project/nx4gaxiacqc6u19maqpq/revision/44/1200.jpeg"/>
+<meta property="twitter:image" content="https://images.websim.com/v1/project/nx4gaxiacqc6u19maqpq/revision/44/1200.jpeg"/>
+<link  rel="canonical" href="https://websim.com/@cybersplace0147/simple-ai-chat-2">
+<link rel="stylesheet" href="https://api.websim.com/fonts.css?v=fdf310cec26fd46e4f7d14c484a9a6d02132fd45">
+<link rel="stylesheet" href="https://api.websim.com/ctxmenu.css?v=fdf310cec26fd46e4f7d14c484a9a6d02132fd45">
+<script class="websim-injected">__WEBSIM_DATA__={"home":false,"hostOrigin":"https://websim.com","apiOrigin":"https://api.websim.com","isTopLevelFrame":false,"project_id":"nx4gaxiacqc6u19maqpq","project_version":44,"route":{"type":"slug","username":"cybersplace0147","slug":"simple-ai-chat-2"},"baseUrl":"https://websim.com/@cybersplace0147/simple-ai-chat-2"}</script>
+<script class="websim-injected" src="https://api.websim.com/dist/index.js?v=fdf310cec26fd46e4f7d14c484a9a6d02132fd45"></script>
+    <link rel="stylesheet" href="style.css" w-tid="7"/>
+    <script type="importmap" w-tid="9">
+        {
+            "imports": {
+                "./js/themeManager.js": "./js/themeManager.js",
+                "./js/uiManager.js": "./js/uiManager.js",
+                "./js/chatManager.js": "./js/chatManager.js"
+            }
+        }
+    </script>
+    <script type="module" src="script.js" w-tid="11"></script>
+</head>
+<body w-tid="13">
+    <div id="intro-animation" class="intro-animation" w-tid="15"></div>
+
+    <div class="header" w-tid="17">
+        <button id="hamburger-menu-button" class="hamburger-menu-button" w-tid="19">
+            ☰
+        </button>
+        <div id="menu-panel" class="menu-panel" w-tid="21">
+            <div class="menu-item" id="settings-menu-item" w-tid="23">Settings</div>
+            <!-- Other menu items can go here -->
+        </div>
+    </div>
+
+    <div class="chat-box" id="chat-box" w-tid="25">
+        <!-- Messages will be added here -->
+    </div>
+    <div class="input-area" w-tid="27">
+        <select id="model-select" w-tid="29"></select>
+        <input type="text" id="user-input" placeholder="Type your message..." w-tid="31"/>
+        <button id="send-button" w-tid="33">Send</button>
+        <div class="reasoning-toggle" w-tid="35">
+            <input type="checkbox" id="reasoning-mode-checkbox" w-tid="37"/>
+            <label for="reasoning-mode-checkbox" w-tid="39">Reasoning Mode</label>
+        </div>
+    </div>
+
+    <!-- New Settings Modal -->
+    <div id="settings-modal" class="settings-modal" w-tid="41">
+        <div class="settings-modal-content" w-tid="43">
+            <span class="settings-modal-close" w-tid="45">×</span>
+            <h2 w-tid="47">Settings</h2>
+            <div class="settings-tabs" w-tid="49">
+                <div class="settings-tab active" data-tab="theme" w-tid="51">Theme</div>
+                <!-- Future tabs can be added here -->
+            </div>
+            <div class="settings-tab-content" w-tid="53">
+                <div id="theme-tab" class="tab-content active" w-tid="55">
+                    <h3 w-tid="57">Select Theme</h3>
+                    <div class="theme-options-grid" w-tid="59">
+                        <div class="theme-option" data-theme="default" w-tid="61">
+                            <div class="theme-preview" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" w-tid="63"></div>
+                            <span w-tid="65">Default</span>
+                        </div>
+                        <div class="theme-option" data-theme="lemonade" w-tid="67">
+                            <div class="theme-preview" style="background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);" w-tid="69"></div>
+                            <span w-tid="71">Lemonade</span>
+                        </div>
+                        <div class="theme-option" data-theme="ocean" w-tid="73">
+                            <div class="theme-preview" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" w-tid="75"></div>
+                            <span w-tid="77">Ocean</span>
+                        </div>
+                        <div class="theme-option" data-theme="fire" w-tid="79">
+                            <div class="theme-preview" style="background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);" w-tid="81"></div>
+                            <span w-tid="83">Fire</span>
+                        </div>
+                        <div class="theme-option" data-theme="paper" w-tid="85">
+                            <div class="theme-preview" style="background: linear-gradient(135deg, #f7f7f7 0%, #e0e0e0 100%);" w-tid="87"></div>
+                            <span w-tid="89">Paper</span>
+                        </div>
+                        <div class="theme-option" data-theme="carbon" w-tid="91">
+                            <div class="theme-preview" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);" w-tid="93"></div>
+                            <span w-tid="95">Carbon</span>
+                        </div>
+                        <div class="theme-option" data-theme="custom" w-tid="97">
+                            <div class="theme-preview custom-theme-preview" w-tid="99"></div>
+                            <span w-tid="101">Custom</span>
+                        </div>
+                    </div>
+                    <div id="custom-theme-inputs" class="custom-theme-inputs" style="display: none;" w-tid="103">
+                        <label for="custom-color-start" w-tid="105">Start Color:</label>
+                        <input type="text" id="custom-color-start" placeholder="#RRGGBB" value="#667eea" w-tid="107"/>
+                        <label for="custom-color-end" w-tid="109">End Color:</label>
+                        <input type="text" id="custom-color-end" placeholder="#RRGGBB" value="#764ba2" w-tid="111"/>
+                        <button id="apply-custom-theme" w-tid="113">Apply Custom Theme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
