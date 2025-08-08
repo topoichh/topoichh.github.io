@@ -1,8 +1,10 @@
+Privacy Policy
 
-1. We don't collect data from you.
-We don't collect optional data, your IP Address and more because our site is secured.
-Even if you made something your IP Address is being strongly secured.
+Effective Date: [2025-08-08]
 
-2. No DDOS Attacks.
-If you will do DDOS Attacks on topoichh.xyz, cgcristi.xyz and github.io domains you are cooked.
-It is illegal to do so... just don't do it and you'll be fine. ( i hope)
+This site, Topoichh.xyz, does not collect personal data.
+- No forms
+- No tracking
+- No cookies (unless your hosting provider adds them)
+- No funny business
+If you somehow manage to send me data through sheer browser wizardry, I won’t use it, store it, or share it.
