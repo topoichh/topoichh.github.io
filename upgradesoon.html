@@ -3,34 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>topoichh projects</title>
-  <meta property="og:title" content="topoichh">
-  <meta property="og:description" content="cool site ig">
+  <title>Topoichh Projects</title>
+  
+  
+  <meta name="description" content="Topoichh Projects — cool site with experimental programming stuff, changelogs, and more.">
+  <meta name="keywords" content="Topoichh, programming, projects, changelog, CS2 MVP, Anti-NSFW, Phonk">
+  <meta name="author" content="Topoichh">
+  
+
+  <meta property="og:title" content="Topoichh Projects">
+  <meta property="og:description" content="Cool site with programming experiments, tools, and fun projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://topoichh.xyz">
+  <meta property="og:image" content="https://topoichh.xyz/logo.png"> 
+  
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Topoichh Projects">
+  <meta name="twitter:description" content="Cool site with programming experiments, tools, and fun projects.">
+  <meta name="twitter:image" content="https://topoichh.xyz/logo.png"> 
+
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Arial',sans-serif;color:#fff;line-height:1.6;padding:20px;background:linear-gradient(-45deg,#6a1b9a,#1e3c72,#23a6d5,#23d5ab);background-size:400% 400%;animation:gradient 15s ease infinite;min-height:100vh}@keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}a{color:#fff;text-decoration:none;transition:color .3s ease}a:hover{color:#23d5ab}h1,h2,h3{font-family:'Arial',sans-serif;color:#fff;font-weight:700;margin-bottom:20px}.container{max-width:1100px;margin:0 auto;padding:30px;background-color:rgba(255,255,255,.1);border-radius:10px}.blog-post{margin-bottom:40px}.blog-post img{width:100%;height:auto;border-radius:10px;margin-bottom:20px}.blog-post h2{font-size:2.5rem;margin-bottom:10px}.blog-post p{font-size:1.1rem;line-height:1.8;color:#ddd}.blog-post .author{font-style:italic;font-size:1rem;color:#bbb}.navbar{display:flex;justify-content:space-between;align-items:center;padding:20px;background:#1e3c72;border-radius:10px;margin-bottom:40px}.navbar a{color:#fff;font-size:1.2rem;margin:0 15px}.navbar a:hover{color:#23d5ab}footer{background:#1e3c72;text-align:center;padding:20px;color:#fff;border-radius:10px;margin-top:40px}footer p{font-size:1rem}footer a{color:#23d5ab;text-decoration:underline}@media (max-width:768px){.container{padding:20px}.navbar{flex-direction:column;align-items:flex-start}.navbar a{margin:10px 0}}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      line-height: 1.6;
+      padding: 20px;
+      background: linear-gradient(-45deg, #6a1b9a, #1e3c72, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      min-height: 100vh;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #23d5ab;
+    }
+    h1, h2, h3 {
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    .blog-post {
+      margin-bottom: 40px;
+    }
+    .blog-post img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .blog-post p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #ddd;
+    }
+    .blog-post .author {
+      font-style: italic;
+      font-size: 1rem;
+      color: #bbb;
+    }
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      background: #1e3c72;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+    .navbar a {
+      color: #fff;
+      font-size: 1.1rem;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .navbar a.active {
+      background-color: rgba(35, 213, 171, 0.2);
+    }
+    footer {
+      background: #1e3c72;
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+      border-radius: 10px;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #23d5ab;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+      .navbar {
+        flex-direction: column;
+      }
+      .navbar a {
+        margin: 5px 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <a href="https://topoichh.xyz/mvp">CS2 MVP</a>
-    <a href="https://ant1nsfw.github.io">Anti-NSFW</a>
-    <a href="https://topoichh.xyz/coolhtml">coolhtml</a>
-    <a href="https://topoichhsite.github.io/skelbimai">Mano Skelbimai</a>
-    <a href="https://phonk.topoichh.xyz">Sqpiluw Phonk</a>
-  </nav>
-  
-  <div class="container">
-    <div class="blog-post">
+
+  <header>
+    <nav class="navbar">
+      <a href="https://topoichh.xyz/mvp">CS2 MVP</a>
+      <a href="https://ant1nsfw.github.io">Anti-NSFW</a>
+      <a href="https://topoichh.xyz/coolhtml">coolhtml</a>
+      <a href="https://topoichhsite.github.io/skelbimai">Mano Skelbimai</a>
+      <a href="https://phonk.topoichh.xyz">Sqpiluw Phonk</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="blog-post">
       <h2>Topoichh Projects</h2>
-      <p> Unknown years old programmer, tryna do shit on this server and domain
-      <p>Latest changelogs of the site: 6/21/2025 - Added back <a href="https://phonk.topoichh.xyz">Sqpliuw Phonk</a>
-     </p>
-    </div>
-  </div>
+      <p>Unknown years old programmer, tryna do stuff on this server and domain.</p>
+      <p><strong>Latest changelogs of the site:</strong></p>
+      <ul>
+        <li>6/21/2025 - Added back <a href="https://phonk.topoichh.xyz">Sqpliuw Phonk</a></li>
+      </ul>
+    </article>
+  </main>
 
   <footer>
     <p>© 2025 Topoichh Projects. All rights reserved.</p>
-    <p><a href="privacy-policy.txt">Privacy Policy,</a> <a href="https://raw.githubusercontent.com/topoichhsite/topoichhsite.github.io/refs/heads/main/LICENSE">License</a></p>
+    <p>
+      <a href="privacy-policy.txt">Privacy Policy</a> | 
+      <a href="https://raw.githubusercontent.com/topoichhsite/topoichhsite.github.io/refs/heads/main/LICENSE">License</a>
+    </p>
   </footer>
+
+  <script>
+    const links = document.querySelectorAll('.navbar a');
+    links.forEach(link => {
+      if (link.href === window.location.href) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+
 </body>
 </html>
