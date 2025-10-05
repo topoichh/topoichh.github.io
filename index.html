@@ -62,10 +62,20 @@
       background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(8px);
       border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.2);
       transition: background 0.5s ease, color 0.5s ease;
-      position: relative; z-index: 10;
+      position: relative; z-index: 10; text-align: center;
     }
     h2 { font-size: 2rem; margin-bottom: 15px; font-weight: 700; }
     p { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 15px; line-height: 1.7; transition: color 0.5s ease; }
+
+    .gif-banner {
+      margin: 20px auto;
+      display: block;
+      width: 600px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
 
     footer {
       text-align: center; padding: 20px;
@@ -112,14 +122,10 @@
         backdrop-filter: blur(10px);
         border-radius: 0 0 15px 15px;
         overflow: hidden;
-        max-height: 0;              /* closed */
-        opacity: 0;
+        max-height: 0; opacity: 0;
         transform: translateY(-8px);
         pointer-events: none;
-        transition:
-          max-height 0.35s ease,
-          opacity 0.25s ease,
-          transform 0.35s ease;
+        transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.35s ease;
         z-index: 999;
       }
       .nav-links.active {
@@ -135,6 +141,7 @@
         border-top: 1px solid rgba(255,255,255,0.08);
       }
       .container { margin: 80px 20px 20px 20px; padding: 20px; }
+      .gif-banner { width: 100%; height: auto; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -159,9 +166,14 @@
   <main class="container">
     <h2>Topoichh Projects</h2>
     <h3>Warning! My domain is ending soon... I might be contiuning our work on github.io</h3>
-    <p>Before using this site you agree to our <a href="terms-of-use.txt">Terms Of Use</a> and our <a href="privacy-policy.txt">Privacy Policy</a>
+    
+    
+    <img src="blinkiesCafe-fl.gif" alt="made on blinkies.cafe :3" class="gif-banner" />
+
+    <p>Before using this site you agree to our <a href="terms-of-use.txt">Terms Of Use</a> and our <a href="privacy-policy.txt">Privacy Policy</a></p>
     <p>Unknown years old programmer, tryna do stuff on this server and domain.</p>
-    <p><strong>Latest changelogs of the site:</strong> <p>2025-08-09 Current website is now upgraded</p>
+    <p><strong>Latest changelogs of the site:</strong></p>
+    <p>2025-08-09 Current website is now upgraded</p>
     <p>Added Dark Mode, made smoother feelings, animations, added Terms of Use, updated Privacy Policy and updated License.</p>
   </main>
 
@@ -246,7 +258,3 @@
   </script>
 </body>
 </html>
-
-
-
-
