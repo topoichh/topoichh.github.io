@@ -1,3 +1,4 @@
-# topoichhsite.github.io and topoichh.xyz no longer works. topoichh.github.io is original domain.
+# topoichh.github.io ---> topoichh.vercel.app
+### We switched the deployments service because Vercel is faster
 - [MVP](https://topoichh.github.io/mvp)
 - [Anti-NSFW](https://ant1nsfw.github.io)
