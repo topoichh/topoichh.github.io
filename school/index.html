@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TXT Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0d17;
+      --panel: #15182a;
+      --panel-2: #1c2040;
+      --text: #eef0ff;
+      --muted: #a3a7d3;
+      --accent: #7c8cff;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, sans-serif;
+      background:
+        radial-gradient(800px 400px at 10% -10%, #20246b55, transparent),
+        radial-gradient(600px 300px at 90% 10%, #7c8cff33, transparent),
+        var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 900px;
+      height: min(80vh, 700px);
+      background: linear-gradient(180deg, var(--panel), var(--panel-2));
+      border-radius: 20px;
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(6px);
+    }
+
+    .title {
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(124,140,255,0.15);
+      color: var(--accent);
+    }
+
+    .content {
+      padding: 20px;
+      overflow: auto;
+      flex: 1;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .loading {
+      color: var(--muted);
+    }
+
+    .error {
+      color: #ff7a7a;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.15);
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <div class="title">Text File Viewer</div>
+      <div class="badge">.txt</div>
+    </div>
+    <div class="content">
+      <pre id="output" class="loading">Loading…</pre>
+    </div>
+  </div>
+
+  <script>
+    const txtFilePath = 'angis.txt';
+
+    fetch(txtFilePath)
+      .then(r => {
+        if (!r.ok) throw new Error();
+        return r.text();
+      })
+      .then(text => {
+        const out = document.getElementById('output');
+        out.textContent = text;
+        out.classList.remove('loading');
+      })
+      .catch(() => {
+        const out = document.getElementById('output');
+        out.textContent = 'Failed to load text file.';
+        out.className = 'error';
+      });
+  </script>
+</body>
+</html>
