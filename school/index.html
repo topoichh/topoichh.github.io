@@ -121,7 +121,9 @@
   </div>
 
   <script>
-    const txtFilePath = 'angis.txt';
+    // Load from URL parameter or fallback file
+    const params = new URLSearchParams(window.location.search);
+    const txtFilePath = params.get('file') || 'example.txt';
 
     fetch(txtFilePath)
       .then(r => {
