@@ -1,0 +1,200 @@
+Angis 10-14 lygiai
+
+10 Lygis
+reikalinga angis
+reikalingas žaidimas
+
+scena = žaidimas.Scena(plotis=700, aukštis=800)
+scena.naudokFoną('pav/pilis/fejos_mene.png')
+
+veidrodis  = žaidimas.Dekoracija('pav/pilis/veidrodis.png',  x=0,   y=510)
+langas     = žaidimas.Dekoracija('pav/pilis/langas.png',     x=180, y=410)
+lempa      = žaidimas.Dekoracija('pav/pilis/lempa.png',      x=300, y=510)
+skrynia    = žaidimas.Dekoracija('pav/pilis/skrynia.png',    x=420, y=510)
+herbas     = žaidimas.Dekoracija('pav/pilis/herbas.png',     x=430, y=630)
+paveikslas = žaidimas.Dekoracija('pav/pilis/paveikslas.png', x=530, y=630)
+uŽuolaidos = žaidimas.Dekoracija('pav/pilis/uzuolaidos.png', x=670, y=510)
+
+
+komanda prikabinkPilį(veidrodisX, veidrodisY):
+    veidrodis.prisikabinkPriePelės()
+
+komanda palikPilį(veidrodisX, veidrodisY):
+    veidrodis.atsikabinkNuoPelės()
+
+veidrodis.pelęPaspaudus(veiksmas = prikabinkPilį)
+veidrodis.pelęAtleidus(veiksmas = palikPilį)
+
+######################################################
+
+komanda prikabinkA(langasX, langasY):
+    langas.prisikabinkPriePelės()
+
+komanda palikB(langasX, langasY):
+    langas.atsikabinkNuoPelės()
+
+langas.pelęPaspaudus(veiksmas = prikabinkA)
+langas.pelęAtleidus(veiksmas = palikB)
+
+######################################################
+
+komanda prikabinkC(lempaX, lempaY):
+    lempa.prisikabinkPriePelės()
+
+komanda palikD(lempaX, lempaY):
+    lempa.atsikabinkNuoPelės()
+
+lempa.pelęPaspaudus(veiksmas = prikabinkC)
+lempa.pelęAtleidus(veiksmas = palikD)
+
+######################################################
+
+komanda prikabinkE(skryniaX, skryniaY):
+    skrynia.prisikabinkPriePelės()
+
+komanda palikF(skryniaX, skryniaY):
+    skrynia.atsikabinkNuoPelės()
+
+skrynia.pelęPaspaudus(veiksmas = prikabinkE)
+skrynia.pelęAtleidus(veiksmas = palikF)
+
+######################################################
+
+komanda prikabinkG(herbasX, herbasY):
+    herbas.prisikabinkPriePelės()
+
+komanda palikH(herbasX, herbasY):
+    herbas.atsikabinkNuoPelės()
+
+herbas.pelęPaspaudus(veiksmas = prikabinkG)
+herbas.pelęAtleidus(veiksmas = palikH)
+
+######################################################
+
+komanda prikabinkI(paveikslasX, paveikslasY):
+    paveikslas.prisikabinkPriePelės()
+
+komanda palikJ(paveikslasX, paveikslasY):
+    paveikslas.atsikabinkNuoPelės()
+
+paveikslas.pelęPaspaudus(veiksmas = prikabinkI)
+paveikslas.pelęAtleidus(veiksmas = palikJ)
+
+######################################################
+
+komanda prikabinkK(uŽuolaidosX, uŽuolaidosY):
+    uŽuolaidos.prisikabinkPriePelės()
+
+komanda palikL(uŽuolaidosX, uŽuolaidosY):
+    uŽuolaidos.atsikabinkNuoPelės()
+
+uŽuolaidos.pelęPaspaudus(veiksmas = prikabinkK)
+uŽuolaidos.pelęAtleidus(veiksmas = palikL)
+
+
+11 LYGIS
+reikalingas lygis11
+
+reikalingas žaidimas
+
+žmogausTaškai = 0
+slibinoTaškai = 0
+
+žmogus = žaidimas.Dekoracija('pav/zmogus1.png', 1, 100)
+slibinas = žaidimas.Dekoracija('pav/slibinas1.png', 400, 100)
+
+slibinoPasirinkimas = 'a'
+žmogausPasirinkimas = žaidimas.paklauskTeksto("a - akmuo \n ž - žirklės \n p - popierius")
+jei žmogausPasirinkimas == 'a':
+    žmogus.naudokPaveiksliuką('pav/zmogus_akmuo.png')
+    slibinoPasirinkimas = 'p'
+jei žmogausPasirinkimas == 'ž':
+    žmogus.naudokPaveiksliuką('pav/zmogus_zirkles.png')
+    slibinoPasirinkimas = 'a'
+jei žmogausPasirinkimas == 'p':
+    žmogus.naudokPaveiksliuką('pav/zmogus_popierius.png')
+    slibinoPasirinkimas = 'ž'
+
+jei slibinoPasirinkimas == 'a':
+    slibinas.naudokPaveiksliuką('pav/slibinas_akmuo.png')
+jei slibinoPasirinkimas == 'ž':
+    slibinas.naudokPaveiksliuką('pav/slibinas_zirkles.png')
+jei slibinoPasirinkimas == 'p':
+    slibinas.naudokPaveiksliuką('pav/slibinas_popierius.png')
+
+jei žmogausPasirinkimas == 'a':
+    jei slibinoPasirinkimas == 'ž':
+        žmogausTaškai = žmogausTaškai + 1
+    jei slibinoPasirinkimas == 'p':
+        slibinoTaškai = slibinoTaškai + 1
+
+jei žmogausPasirinkimas == 'p': 
+    jei slibinoPasirinkimas == 'a':
+        žmogausTaškai = žmogausTaškai + 1
+    jei slibinoPasirinkimas == 'ž':
+        slibinoTaškai = slibinoTaškai + 1
+
+jei žmogausPasirinkimas == 'ž': 
+    jei slibinoPasirinkimas == 'p':
+        žmogausTaškai = žmogausTaškai +1
+    jei slibinoPasirinkimas == 'a':
+        slibinoTaškai = slibinoTaškai +1
+
+žaidimas.sakyk("Slibinas ", slibinoTaškai, ": Žmogus ", žmogausTaškai)
+
+12 LYGIS
+reikalingas lygis12
+reikalingas žaidimas
+
+princas = lygis12.princas
+princas.rodykVektorių()
+
+komanda Forward(mygtukas):
+    princas.pirmyn()
+
+komanda Backward(mygtukas):
+    princas.atgal()
+
+komanda Left(mygtukas):
+    princas.kairėn()
+
+komanda Right(mygtukas):
+    princas.dešinėn()
+
+komanda Stop(mygtukas):
+    princas.stok()
+
+komanda Attack():
+    princas.kirsk()
+
+
+žaidimas.mygtukąPaspaudus('w', Forward)
+žaidimas.mygtukąPaspaudus('s', Backward)
+žaidimas.mygtukąPaspaudus('a', Left)
+žaidimas.mygtukąPaspaudus('d', Right)
+
+žaidimas.mygtukąAtleidus('<betKuris>', Stop)
+
+
+žaidimas.pelęPaspaudus(Attack)
+
+13 LYGIS
+reikalingas lygis13
+fėja = lygis13.fėja
+
+burtųLentyna = [
+    lygis13.expectoPatronum,
+    lygis13.lumos,
+    lygis13.accio,
+    lygis13.alohomora,
+    lygis13.obliviate,
+    lygis13.aberto,
+    lygis13.expelliarmus,
+    lygis13.impedimenta
+]
+
+burtoNumeris = fėja.paklauskSkaičiaus('kelintą burtą išbandom? Įvesk jo numerį 0-7')
+burtas = burtųLentyna[burtoNumeris]
+burtas.vykdyk()
+
+---------- FINALAS 14 LYGIS----------
