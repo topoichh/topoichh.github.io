@@ -15,10 +15,6 @@ body {
   color: #fff;
 }
 
-/* =========================
-   BACK BUTTON
-   ========================= */
-
 .back-btn {
   position: fixed;
   top: 20px;
@@ -27,7 +23,7 @@ body {
 }
 
 /* =========================
-   LIQUID GLASS BUTTONS
+   UPD 2026: Liquid Glass
    ========================= */
 
 .controls button,
@@ -103,7 +99,7 @@ body {
 }
 
 /* =========================
-   SEARCH BAR
+   search bar better be more like useless bar :sob:
    ========================= */
 
 .search-wrapper {
@@ -247,16 +243,17 @@ onkeyup="searchProjects()"
 
 <div class="projects-grid">
 
-<a href="#" class="project-btn">Project 1</a>
-<a href="#" class="project-btn">Project 2</a>
-<a href="#" class="project-btn">Project 3</a>
-<a href="#" class="project-btn">Project 4</a>
-<a href="#" class="project-btn">Project 5</a>
-<a href="#" class="project-btn">Project 6</a>
-<a href="#" class="project-btn">Project 7</a>
-<a href="#" class="project-btn">Project 8</a>
-<a href="#" class="project-btn">Project 9</a>
-<a href="#" class="project-btn">Project 10</a>
+<a href="https://ant1nsfw.github.io" class="project-btn">[⭐] Anti-NSFW</a>
+<a href="https://t.me/steamtoolsru" class="project-btn">[⭐] Steam Tools 🇷🇺 Telegram</a>
+<a href="https://dsc.gg/steamtoolsru" class="project-btn">[⭐] Steam Tools 🇷🇺 Discord
+<a href="https://topoichh.vercel.app/mvp" class="project-btn">Counter-Strike 2 MVP</a>
+<a href="https://topoichh.vercel.app/minecraft-custom-music" class="project-btn">Custom Music in Minecraft</a>
+<a href="https://topoichh.vercel.app/phonk" class="project-btn">[Outdated] sqpiluw phonk</a>
+<a href="#" class="project-btn">coming soon...</a>
+<a href="#" class="project-btn">coming soon...</a>
+<a href="#" class="project-btn">coming soon...</a>
+<a href="#" class="project-btn">coming soon...</a>
+
 
 </div>
 
@@ -281,7 +278,7 @@ project.style.display = text.includes(input) ? "block" : "none";
 
 }
 
-/* STYLE SETTINGS */
+/* style settings */
 
 let CURRENT_STYLE = "topoichh";
 
@@ -296,7 +293,7 @@ const STYLES = {
   }
 };
 
-/* CANVAS */
+/* canvas = must be */
 
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
@@ -304,7 +301,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-/* SNOW */
+/* snow */
 
 let particles = [];
 
@@ -354,7 +351,7 @@ p.x=Math.random()*canvas.width;
 
 }
 
-/* LETTER RAIN */
+/* matrix */
 
 const fontSize=16;
 let columns=Math.floor(canvas.width/fontSize);
@@ -404,7 +401,7 @@ drops[i]++;
 
 }
 
-/* STYLE SWITCH */
+/* switch styles javascript */
 
 function setStyle(style){
 
@@ -418,7 +415,7 @@ resetDrops();
 
 }
 
-/* LOOP */
+/* loop */
 
 function draw(){
 
