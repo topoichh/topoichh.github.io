@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — topoichh</title>
+
+<style>
+
+body {
+  margin: 0;
+  background: #0c0c12;
+  overflow: hidden;
+  font-family: sans-serif;
+  color: #fff;
+}
+
+/* =========================
+   BACK BUTTON
+   ========================= */
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+}
+
+/* =========================
+   LIQUID GLASS BUTTONS
+   ========================= */
+
+.controls button,
+.project-btn,
+.back-btn {
+
+  position: relative;
+  display: inline-block;
+  margin: 8px;
+  padding: 10px 22px;
+
+  font-size: 0.95rem;
+  color: #fff;
+  text-decoration: none;
+
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(255,255,255,0.04);
+
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    inset 0 -1px 0 rgba(255,255,255,0.05),
+    0 8px 20px rgba(0,0,0,0.35);
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+/* hover glow */
+
+.controls button::after,
+.project-btn::after,
+.back-btn::after {
+
+  content: "";
+  position: absolute;
+  inset: -1px;
+
+  border-radius: 16px;
+
+  background: linear-gradient(
+    135deg,
+    #a855ff,
+    #7c3aed,
+    #c084fc
+  );
+
+  opacity: 0;
+  z-index: -1;
+  transition: 0.3s ease;
+}
+
+.controls button:hover,
+.project-btn:hover,
+.back-btn:hover {
+  transform: translateY(-2px);
+}
+
+.controls button:hover::after,
+.project-btn:hover::after,
+.back-btn:hover::after {
+
+  opacity: 1;
+
+  box-shadow:
+    0 0 10px rgba(168,85,255,0.6),
+    0 0 25px rgba(168,85,255,0.4);
+}
+
+/* =========================
+   SEARCH BAR
+   ========================= */
+
+.search-wrapper {
+  position: relative;
+  width: 60%;
+  margin: 15px auto;
+}
+
+.search-bar {
+
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+
+  font-size: 0.95rem;
+  color: #fff;
+
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(255,255,255,0.04);
+
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  outline: none;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    0 8px 20px rgba(0,0,0,0.35);
+
+  transition: 0.25s ease;
+}
+
+.search-bar:focus {
+  box-shadow:
+    0 0 10px rgba(168,85,255,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* minimal icon */
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  opacity: 0.6;
+}
+
+.search-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: white;
+  stroke-width: 1.6;
+  fill: none;
+}
+
+/* ========================= */
+
+h1 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg,#fff,#a0a0ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.description {
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 40px;
+  background: rgba(20,20,26,0.65);
+  backdrop-filter: blur(18px);
+  border-radius: 20px;
+  text-align: center;
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="back-btn">← Back to Home</a>
+
+<canvas id="particles"></canvas>
+
+<div class="content-wrapper">
+
+<h1>My Projects</h1>
+
+<p class="description">
+Here are some of my projects. Click any to explore.
+</p>
+
+<div class="controls">
+<button onclick="setStyle('topoichh')">Topoichh</button>
+<button onclick="setStyle('snow')">Snow</button>
+<button onclick="setStyle('matrix')">Matrix</button>
+</div>
+
+<div class="search-wrapper">
+
+<div class="search-icon">
+<svg viewBox="0 0 24 24">
+<circle cx="11" cy="11" r="7"></circle>
+<line x1="20" y1="20" x2="16.5" y2="16.5"></line>
+</svg>
+</div>
+
+<input 
+type="text"
+placeholder="Search projects..."
+class="search-bar"
+onkeyup="searchProjects()"
+>
+
+</div>
+
+<div class="projects-grid">
+
+<a href="#" class="project-btn">Project 1</a>
+<a href="#" class="project-btn">Project 2</a>
+<a href="#" class="project-btn">Project 3</a>
+<a href="#" class="project-btn">Project 4</a>
+<a href="#" class="project-btn">Project 5</a>
+<a href="#" class="project-btn">Project 6</a>
+<a href="#" class="project-btn">Project 7</a>
+<a href="#" class="project-btn">Project 8</a>
+<a href="#" class="project-btn">Project 9</a>
+<a href="#" class="project-btn">Project 10</a>
+
+</div>
+
+</div>
+
+<script>
+
+/* SEARCH */
+
+function searchProjects() {
+
+let input = document.querySelector(".search-bar").value.toLowerCase();
+let projects = document.querySelectorAll(".project-btn");
+
+projects.forEach(project => {
+
+let text = project.innerText.toLowerCase();
+
+project.style.display = text.includes(input) ? "block" : "none";
+
+});
+
+}
+
+/* STYLE SETTINGS */
+
+let CURRENT_STYLE = "topoichh";
+
+const STYLES = {
+  topoichh: {
+    letters: "topoichh",
+    color: "#a855ff"
+  },
+  matrix: {
+    letters: "01",
+    color: "#0f0"
+  }
+};
+
+/* CANVAS */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+/* SNOW */
+
+let particles = [];
+
+function createParticles() {
+
+particles = [];
+
+for (let i = 0; i < 120; i++) {
+
+particles.push({
+x: Math.random() * canvas.width,
+y: Math.random() * canvas.height,
+size: Math.random() * 2 + 1,
+speedY: Math.random() * 0.8 + 0.2,
+speedX: Math.random() * 0.5 - 0.25
+});
+
+}
+
+}
+
+createParticles();
+
+function drawSnow() {
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="rgba(255,255,255,0.8)";
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fill();
+
+p.y+=p.speedY;
+p.x+=p.speedX;
+
+if(p.y>canvas.height){
+
+p.y=0;
+p.x=Math.random()*canvas.width;
+
+}
+
+});
+
+}
+
+/* LETTER RAIN */
+
+const fontSize=16;
+let columns=Math.floor(canvas.width/fontSize);
+let drops=[];
+
+function resetDrops(){
+
+columns=Math.floor(canvas.width/fontSize);
+drops=[];
+
+for(let i=0;i<columns;i++){
+
+drops[i]=Math.random()*canvas.height;
+
+}
+
+}
+
+resetDrops();
+
+function drawLetters(style){
+
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle=style.color;
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+
+const text=
+style.letters[
+Math.floor(Math.random()*style.letters.length)
+];
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+
+drops[i]=0;
+
+}
+
+drops[i]++;
+
+}
+
+}
+
+/* STYLE SWITCH */
+
+function setStyle(style){
+
+CURRENT_STYLE=style;
+
+if(style==="snow"){
+createParticles();
+}else{
+resetDrops();
+}
+
+}
+
+/* LOOP */
+
+function draw(){
+
+if(CURRENT_STYLE==="snow"){
+drawSnow();
+}else if(CURRENT_STYLE==="matrix"){
+drawLetters(STYLES.matrix);
+}else{
+drawLetters(STYLES.topoichh);
+}
+
+}
+
+setInterval(draw,33);
+
+window.addEventListener("resize",()=>{
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+createParticles();
+resetDrops();
+
+});
+
+</script>
+
+</body>
+</html>
