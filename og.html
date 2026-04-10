@@ -6,6 +6,7 @@
 <title>topoichh</title>
 
 <style>
+
 body {
   margin: 0;
   background: #0c0c12;
@@ -14,7 +15,39 @@ body {
   color: #fff;
 }
 
-  .projects-btn {
+/* STYLE SWITCH BUTTONS */
+
+.controls {
+  margin: 20px 0;
+}
+
+.controls button {
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(140,0,255,0.2);
+  color: white;
+  cursor: pointer;
+
+  box-shadow:
+    0 0 10px #8a2cff,
+    inset 0 0 5px #8a2cff;
+
+  transition: 0.3s;
+}
+
+.controls button:hover {
+  transform: scale(1.05);
+
+  box-shadow:
+    0 0 20px #a855ff,
+    inset 0 0 10px #a855ff;
+}
+
+/* PROJECT BUTTON */
+
+.projects-btn {
   display: block;
   margin: 30px auto;
   padding: 18px 40px;
@@ -44,8 +77,9 @@ body {
 
   background: rgba(160, 80, 255, 0.2);
 }
-  
-/* PARTICLES CANVAS */
+
+/* CANVAS */
+
 canvas {
   position: fixed;
   top: 0;
@@ -53,7 +87,8 @@ canvas {
   z-index: 0;
 }
 
-/* MAIN UI */
+/* CONTENT */
+
 .content-wrapper {
   position: relative;
   z-index: 2;
@@ -82,26 +117,199 @@ h1 {
 p {
   color: #aaa;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- PARTICLES -->
 <canvas id="particles"></canvas>
 
 <div class="content-wrapper">
-  <img src="https://avatars.fastly.steamstatic.com/018c9ed379616eb68b8fa8766424ea132760d347_full.jpg" class="profile-photo">
-  <h1>topoichh</h1>
-  <p>a.k.a doggy // jsprcha</p>
-  <p>All rights reserved, 2025.</p>
-  <a href="projects.html" class="projects-btn">
-  My Projects
-</a>
+
+<img src="https://avatars.fastly.steamstatic.com/018c9ed379616eb68b8fa8766424ea132760d347_full.jpg" class="profile-photo">
+
+<h1>topoichh</h1>
+
+<p>a.k.a doggy // jsprcha</p>
+
+<div class="controls">
+<button onclick="setStyle('topoichh')">Topoichh</button>
+<button onclick="setStyle('snow')">Snow</button>
+<button onclick="setStyle('matrix')">Matrix</button>
 </div>
 
-<!-- LOAD JS AT END -->
-<script src="script.js"></script>
+<a href="projects.html" class="projects-btn">My Projects</a>
+
+<p>All rights reserved, 2025.</p>
+
+</div>
+
+<script>
+
+/* =========================
+   STYLE SETTINGS
+   ========================= */
+
+let CURRENT_STYLE = "topoichh";
+
+const STYLES = {
+  topoichh: {
+    letters: "topoichh",
+    color: "#a855ff"
+  },
+  matrix: {
+    letters: "01",
+    color: "#0f0"
+  }
+};
+
+/* =========================
+   SETUP
+   ========================= */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+/* =========================
+   SNOW PARTICLES
+   ========================= */
+
+let particles = [];
+
+function createParticles() {
+  particles = [];
+
+  for (let i = 0; i < 120; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2 + 1,
+      speedY: Math.random() * 0.8 + 0.2,
+      speedX: Math.random() * 0.5 - 0.25
+    });
+  }
+}
+
+createParticles();
+
+function drawSnow() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "rgba(255,255,255,0.8)";
+
+  particles.forEach(p => {
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    p.y += p.speedY;
+    p.x += p.speedX;
+
+    if (p.y > canvas.height) {
+      p.y = 0;
+      p.x = Math.random() * canvas.width;
+    }
+
+  });
+}
+
+/* =========================
+   LETTER RAIN
+   ========================= */
+
+const fontSize = 16;
+let columns = Math.floor(canvas.width / fontSize);
+let drops = [];
+
+function resetDrops() {
+  columns = Math.floor(canvas.width / fontSize);
+  drops = [];
+
+  for (let i = 0; i < columns; i++) {
+    drops[i] = Math.random() * canvas.height;
+  }
+}
+
+resetDrops();
+
+function drawLetters(style) {
+
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = style.color;
+  ctx.font = fontSize + "px monospace";
+
+  for (let i = 0; i < drops.length; i++) {
+
+    const text =
+      style.letters[
+        Math.floor(Math.random() * style.letters.length)
+      ];
+
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+
+    drops[i]++;
+  }
+
+}
+
+/* =========================
+   STYLE SWITCH
+   ========================= */
+
+function setStyle(style) {
+  CURRENT_STYLE = style;
+
+  if (style === "snow") {
+    createParticles();
+  } else {
+    resetDrops();
+  }
+}
+
+/* =========================
+   MAIN LOOP
+   ========================= */
+
+function draw() {
+
+  if (CURRENT_STYLE === "snow") {
+    drawSnow();
+  } else if (CURRENT_STYLE === "matrix") {
+    drawLetters(STYLES.matrix);
+  } else {
+    drawLetters(STYLES.topoichh);
+  }
+
+}
+
+setInterval(draw, 33);
+
+/* =========================
+   RESIZE FIX
+   ========================= */
+
+window.addEventListener("resize", () => {
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  createParticles();
+  resetDrops();
+
+});
+
+</script>
 
 </body>
 </html>
