@@ -15,70 +15,118 @@ body {
   color: #fff;
 }
 
-/* STYLE SWITCH BUTTONS */
+/* =========================
+   2026 UPD: Liquid Glass (iOS flex or what lmao idk)
+   ========================= */
 
 .controls {
   margin: 20px 0;
 }
 
-.controls button {
-  margin: 5px;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  background: rgba(140,0,255,0.2);
-  color: white;
-  cursor: pointer;
-
-  box-shadow:
-    0 0 10px #8a2cff,
-    inset 0 0 5px #8a2cff;
-
-  transition: 0.3s;
-}
-
-.controls button:hover {
-  transform: scale(1.05);
-
-  box-shadow:
-    0 0 20px #a855ff,
-    inset 0 0 10px #a855ff;
-}
-
-/* PROJECT BUTTON */
-
+.controls button,
 .projects-btn {
-  display: block;
-  margin: 30px auto;
-  padding: 18px 40px;
-  font-size: 1.3rem;
+
+  position: relative;
+  display: inline-block;
+  margin: 6px;
+  padding: 10px 22px;
+
+  font-size: 0.95rem;
   color: #fff;
   text-decoration: none;
-  border-radius: 14px;
-  background: rgba(140, 0, 255, 0.15);
-  border: 1px solid rgba(160, 80, 255, 0.6);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(255,255,255,0.04);
+
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
 
   box-shadow:
-    0 0 10px #8a2cff,
-    0 0 20px #8a2cff,
-    inset 0 0 10px #8a2cff;
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    inset 0 -1px 0 rgba(255,255,255,0.05),
+    0 8px 20px rgba(0,0,0,0.35);
 
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  overflow: hidden;
+}
+
+/* glass reflection */
+.controls button::before,
+.projects-btn::before {
+
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.25),
+    rgba(255,255,255,0.05),
+    transparent
+  );
+
+  border-radius: inherit;
+  opacity: 0.35;
+}
+
+/* neon gradient border */
+.controls button::after,
+.projects-btn::after {
+
+  content: "";
+  position: absolute;
+  inset: -1px;
+
+  border-radius: 16px;
+
+  background: linear-gradient(
+    135deg,
+    #a855ff,
+    #7c3aed,
+    #c084fc
+  );
+
+  opacity: 0;
+  z-index: -1;
   transition: 0.3s ease;
 }
 
+/* hover effect */
+.controls button:hover,
 .projects-btn:hover {
-  transform: translateY(-3px) scale(1.02);
+
+  transform: translateY(-2px);
+
+  background: rgba(255,255,255,0.06);
 
   box-shadow:
-    0 0 20px #a855ff,
-    0 0 40px #a855ff,
-    0 0 60px #a855ff,
-    inset 0 0 15px #a855ff;
-
-  background: rgba(160, 80, 255, 0.2);
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    inset 0 -1px 0 rgba(255,255,255,0.08),
+    0 12px 30px rgba(0,0,0,0.45);
 }
 
-/* CANVAS */
+/* purple glow only on hover */
+.controls button:hover::after,
+.projects-btn:hover::after {
+
+  opacity: 1;
+
+  box-shadow:
+    0 0 10px rgba(168,85,255,0.6),
+    0 0 25px rgba(168,85,255,0.4),
+    0 0 50px rgba(168,85,255,0.25);
+}
+
+/* =========================
+   canvas
+   ========================= */
 
 canvas {
   position: fixed;
@@ -87,7 +135,9 @@ canvas {
   z-index: 0;
 }
 
-/* CONTENT */
+/* =========================
+   about
+   ========================= */
 
 .content-wrapper {
   position: relative;
@@ -95,8 +145,8 @@ canvas {
   max-width: 680px;
   margin: 80px auto;
   padding: 50px;
-  background: rgba(20,20,26,0.7);
-  backdrop-filter: blur(15px);
+  background: rgba(20,20,26,0.65);
+  backdrop-filter: blur(18px);
   border-radius: 20px;
   text-align: center;
 }
@@ -131,7 +181,7 @@ p {
 
 <h1>topoichh</h1>
 
-<p>a.k.a doggy // jsprcha</p>
+<p>a.k.a doggy // jsprcha | settings of styles won't be saved. working on that</p>
 
 <div class="controls">
 <button onclick="setStyle('topoichh')">Topoichh</button>
@@ -147,9 +197,7 @@ p {
 
 <script>
 
-/* =========================
-   STYLE SETTINGS
-   ========================= */
+/* customizable style settings idk what ts code about */
 
 let CURRENT_STYLE = "topoichh";
 
@@ -164,9 +212,7 @@ const STYLES = {
   }
 };
 
-/* =========================
-   SETUP
-   ========================= */
+/* setup */
 
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
@@ -174,9 +220,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-/* =========================
-   SNOW PARTICLES
-   ========================= */
+/* snow */
 
 let particles = [];
 
@@ -197,6 +241,7 @@ function createParticles() {
 createParticles();
 
 function drawSnow() {
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   ctx.fillStyle = "rgba(255,255,255,0.8)";
@@ -216,23 +261,24 @@ function drawSnow() {
     }
 
   });
+
 }
 
-/* =========================
-   LETTER RAIN
-   ========================= */
+/* topoichh */
 
 const fontSize = 16;
 let columns = Math.floor(canvas.width / fontSize);
 let drops = [];
 
 function resetDrops() {
+
   columns = Math.floor(canvas.width / fontSize);
   drops = [];
 
   for (let i = 0; i < columns; i++) {
     drops[i] = Math.random() * canvas.height;
   }
+
 }
 
 resetDrops();
@@ -259,15 +305,15 @@ function drawLetters(style) {
     }
 
     drops[i]++;
+
   }
 
 }
 
-/* =========================
-   STYLE SWITCH
-   ========================= */
+/* customization styles */
 
 function setStyle(style) {
+
   CURRENT_STYLE = style;
 
   if (style === "snow") {
@@ -275,11 +321,10 @@ function setStyle(style) {
   } else {
     resetDrops();
   }
+
 }
 
-/* =========================
-   MAIN LOOP
-   ========================= */
+/* loop styles */
 
 function draw() {
 
@@ -295,9 +340,7 @@ function draw() {
 
 setInterval(draw, 33);
 
-/* =========================
-   RESIZE FIX
-   ========================= */
+/* resize */
 
 window.addEventListener("resize", () => {
 
