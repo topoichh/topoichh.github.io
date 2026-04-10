@@ -1,9 +1,26 @@
 /* =========================
-   SETTINGS
+   USER SETTINGS
    ========================= */
 
-// "circles" or "matrix"
-const MODE = "circles";
+const SETTINGS = {
+  mode: "circles", // "circles" or "matrix"
+
+  circles: {
+    count: 120,
+    color: "rgba(255,255,255,0.8)",
+    maxSize: 2,
+    minSize: 1,
+    speedY: 0.8,
+    speedX: 0.5
+  },
+
+  matrix: {
+    letters: "01",
+    color: "#0f0",
+    fontSize: 16,
+    fade: "rgba(0,0,0,0.05)"
+  }
+};
 
 /* =========================
    SETUP
@@ -23,13 +40,14 @@ let particles = [];
 
 function createParticles() {
   particles = [];
-  for (let i = 0; i < 120; i++) {
+
+  for (let i = 0; i < SETTINGS.circles.count; i++) {
     particles.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      size: Math.random() * 2 + 1,
-      speedY: Math.random() * 0.8 + 0.2,
-      speedX: Math.random() * 0.5 - 0.25
+      size: Math.random() * SETTINGS.circles.maxSize + SETTINGS.circles.minSize,
+      speedY: Math.random() * SETTINGS.circles.speedY + 0.2,
+      speedX: Math.random() * SETTINGS.circles.speedX - SETTINGS.circles.speedX / 2
     });
   }
 }
@@ -39,7 +57,7 @@ createParticles();
 function drawCircles() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "rgba(255,255,255,0.8)";
+  ctx.fillStyle = SETTINGS.circles.color;
 
   particles.forEach(p => {
     ctx.beginPath();
@@ -60,8 +78,7 @@ function drawCircles() {
    MATRIX MODE
    ========================= */
 
-const letters = "01";
-const fontSize = 16;
+const fontSize = SETTINGS.matrix.fontSize;
 const columns = Math.floor(canvas.width / fontSize);
 const drops = [];
 
@@ -70,14 +87,17 @@ for (let i = 0; i < columns; i++) {
 }
 
 function drawMatrix() {
-  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillStyle = SETTINGS.matrix.fade;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "#0f0";
+  ctx.fillStyle = SETTINGS.matrix.color;
   ctx.font = fontSize + "px monospace";
 
   for (let i = 0; i < drops.length; i++) {
-    const text = letters[Math.floor(Math.random() * letters.length)];
+    const text =
+      SETTINGS.matrix.letters[
+        Math.floor(Math.random() * SETTINGS.matrix.letters.length)
+      ];
 
     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
@@ -94,7 +114,7 @@ function drawMatrix() {
    ========================= */
 
 function draw() {
-  if (MODE === "circles") {
+  if (SETTINGS.mode === "circles") {
     drawCircles();
   } else {
     drawMatrix();
